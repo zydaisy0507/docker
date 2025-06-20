@@ -1,0 +1,7 @@
+*** Begin Patch
+*** Update File: assets/scripts/03-gen_dkim.sh
+@@ main() {
+-    SELECTOR=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 18)
++    # 生成 18 位随机字母数字串：先截取再过滤，避免 SIGPIPE
++    SELECTOR=$(head -c 18 /dev/urandom | tr -dc 'A-Za-z0-9')
+*** End Patch

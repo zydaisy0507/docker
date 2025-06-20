@@ -1,0 +1,21 @@
+*** Begin Patch
+*** Update File: assets/scripts/05-fetch_zone.sh
+@@ retry() {
+-  until "$@"; do
+-    if (( i >= max )); then
+-      return 1
+-    fi
+-    log "第${i}次失败，${delay}s后重试"
+-    sleep $delay
+-    (( i++ )); delay=$(( delay * 2 ))
+-  done
++  until "$@"; do
++    if (( i >= max )); then
++      return 1
++    fi
++    log "第${i}次失败，${delay}s后重试"
++    sleep "$delay"
++    (( i++ ))
++    delay=$(( delay * 2 ))
++  done
+*** End Patch
